@@ -3,6 +3,7 @@ var querystring = require("querystring"),
 
 function start(response, postData) {
     console.log("Request handler 'start' was called.");
+    console.log(process.cwd());
     var body = '<html>' +
         '<head>' +
         '<meta http-equiv="Content-Type" content="text/html; '+
@@ -33,7 +34,7 @@ function upload(response, postData) {
 function show(response){
     console.log("Request handler 'show' was called.");
     response.writeHead(200, {"Content-type": "image/png"});
-    fs.createReadStream("/test.png").pipe(response);
+    fs.createReadStream(__dirname + '/tmp/test.png').pipe(response);
 }
 
 exports.start = start;
